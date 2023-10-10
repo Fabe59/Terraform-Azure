@@ -214,7 +214,7 @@ resource "azurerm_automation_schedule" "testStart" {
   interval                = 1
   timezone                = "UTC"
   start_time              = "2023-03-17T07:00:00+01:00"
-  description             = "This is an example schedule"
+  description             = "Scheduled VM startup example"
   #week_days               = ["Friday"] only if frequency is "Week"
 }
 
@@ -260,7 +260,7 @@ resource "azurerm_automation_schedule" "testStop" {
   interval                = 1
   timezone                = "UTC"
   start_time              = "2023-03-16T18:00:00+01:00"
-  description             = "This is an example of stop schedule"
+  description             = "Scheduled VM shutdown example"
   #week_days               = ["Friday"] only if frequency is "Week"
 }
 
