@@ -206,7 +206,7 @@ resource "azurerm_automation_runbook" "Start_VMs" {
   content                 = data.local_file.start-ps1.content
 }
 
-resource "azurerm_automation_schedule" "test" {
+resource "azurerm_automation_schedule" "testStart" {
   name                    = "startvm-automation-schedule"
   resource_group_name     = azurerm_resource_group.example.name
   automation_account_name = azurerm_automation_account.aa-fprgt-demo.name
@@ -221,7 +221,7 @@ resource "azurerm_automation_schedule" "test" {
 resource "azurerm_automation_job_schedule" "demo_sched" {
   resource_group_name     = azurerm_resource_group.example.name
   automation_account_name = azurerm_automation_account.aa-fprgt-demo.name
-  schedule_name           = azurerm_automation_schedule.test.name
+  schedule_name           = azurerm_automation_schedule.testStart.name
   runbook_name            = azurerm_automation_runbook.Start_VMs.name
   
   parameters = {
@@ -252,7 +252,7 @@ resource "azurerm_automation_runbook" "Stop_VMs" {
   content                 = data.local_file.stop-ps1.content
 }
 
-resource "azurerm_automation_schedule" "teststop" {
+resource "azurerm_automation_schedule" "testStop" {
   name                    = "stopvm-automation-schedule"
   resource_group_name     = azurerm_resource_group.example.name
   automation_account_name = azurerm_automation_account.aa-fprgt-demo.name
@@ -267,7 +267,7 @@ resource "azurerm_automation_schedule" "teststop" {
 resource "azurerm_automation_job_schedule" "demo_sched_stop" {
   resource_group_name     = azurerm_resource_group.example.name
   automation_account_name = azurerm_automation_account.aa-fprgt-demo.name
-  schedule_name           = azurerm_automation_schedule.teststop.name
+  schedule_name           = azurerm_automation_schedule.testStop.name
   runbook_name            = azurerm_automation_runbook.Stop_VMs.name
   depends_on = [azurerm_automation_schedule.teststop]
 
